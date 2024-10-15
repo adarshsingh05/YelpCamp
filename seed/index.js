@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Campground = require('../model/campground');
 const cities = require('./cities');
 const {descriptors, places} = require('./seedHelpers');
-const campground = require('../model/campground');
+
 // connecting the exported mongoose
 mongoose.connect('mongodb://localhost:27017/yelp-camp');
 // checking if any error in DB or not

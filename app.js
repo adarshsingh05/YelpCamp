@@ -30,13 +30,11 @@ app.get('/', (req, res) =>{
     res.render('home')
 })
 
-// another route for the campground
-app.get('/makecampground', (req, res) =>{
-    // adding the data
-    camp = new Campground({
-        title: 'My backyard',
-        description: 'cheap',
-        price: '450'
-    })
-    res.send(camp);
+// adding the all name campground route
+
+app.get('/campgrounds', async  (req,res) =>{
+    // getting all the campground in a variable
+    const campgrounds = await Campground.find({})
+    res.render('campground/index',{campgrounds})
+
 })
