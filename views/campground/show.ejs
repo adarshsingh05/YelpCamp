@@ -6,12 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> </h1>
+    
     <li><%= campground.title %></li>
     <li><%= campground.location %></li>
 
     <footer>
         <a href="/campgrounds">all campgrounds</a>
+        <a href="/campgrounds/<%=campground._id%>/edit">Edit campground</a>
+
     </footer>
 </body>
 </html>
