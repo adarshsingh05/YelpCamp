@@ -9,7 +9,7 @@
     <h1>All Campground List</h1>
     <ul>
         <% for(let campground of campgrounds) { %> <!-- Corrected spacing here -->
-            <li><%= campground.title %></li>  <!-- Corrected spacing here -->
+            <li><a href="/campgrounds/<%= campground._id %>"><%= campground.title %></a></li>  <!-- Corrected spacing here -->
         <% } %>
     </ul>
 </body>

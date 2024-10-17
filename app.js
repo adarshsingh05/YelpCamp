@@ -30,11 +30,17 @@ app.get('/', (req, res) =>{
     res.render('home')
 })
 
+app.get('/campgrounds/:id', async (req, res) =>{
+const campground = await Campground.findById(req.params.id);
+    res.render('campground/show',{campground})
+})
+
 // adding the all name campground route
 
 app.get('/campgrounds', async  (req,res) =>{
-    // getting all the campground in a variable
+    // getting all the campground in a variable from the file of campground.js imported above
     const campgrounds = await Campground.find({})
+    // rendering the file of html here for the ui
     res.render('campground/index',{campgrounds})
 
 })
