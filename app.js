@@ -16,6 +16,8 @@ db.once("open", ()=>{
 
 // setting the view engine to load the ejs file 
 app.set('view engine' , 'ejs');
+// adding urlextended
+app.use(express.urlencoded({extended:true}));
 app.set('views' ,path.join(__dirname, 'views'))
 
 
@@ -30,13 +32,6 @@ app.get('/', (req, res) =>{
     res.render('home')
 })
 
-app.get('/campgrounds/:id', async (req, res) =>{
-const campground = await Campground.findById(req.params.id);
-    res.render('campground/show',{campground})
-})
-
-// adding the all name campground route
-
 app.get('/campgrounds', async  (req,res) =>{
     // getting all the campground in a variable from the file of campground.js imported above
     const campgrounds = await Campground.find({})
@@ -44,3 +39,23 @@ app.get('/campgrounds', async  (req,res) =>{
     res.render('campground/index',{campgrounds})
 
 })
+
+// adding the route to add new campgrounds
+app.get('/campgrounds/new', (req,res)=>{
+    res.render('campground/new');
+})
+// adding a post request route for the newly added campgrounds
+app.post('/campgrounds', async(req,res) =>{
+    // res.send(req.body);
+    // actually saving the data in the DB
+    const campground = new Campground(req.body.campground);
+    await  campground.save();
+    res.redirect(`/campgrounds/${campground._id}`)
+})
+app.get('/campgrounds/:id', async (req, res) =>{
+const campground = await Campground.findById(req.params.id);
+    res.render('campground/show',{campground})
+})
+
+// adding the all name campground route
+
