@@ -9,6 +9,12 @@
     
     <li><%= campground.title %></li>
     <li><%= campground.location %></li>
+    <p>
+        <!-- sending the delete request using method override to the campground -->
+        <form action="/campgrounds/<%=campground._id %>?_method=delete" method="post">
+            <button> Delete</button>
+        </form>
+    </p>
 
     <footer>
         <a href="/campgrounds">all campgrounds</a>

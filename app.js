@@ -44,6 +44,13 @@ app.get('/campgrounds', async  (req,res) =>{
 
 })
 
+// the delete route it could be a post route but we can use delete as well
+app.delete('/campgrounds/:id', async(req, res) =>{
+    const {id} =  req.params;
+    await Campground.findByIdAndDelete(id);
+    res.redirect('/campgrounds');
+})
+
 // adding the route to add new campgrounds
 app.get('/campgrounds/new', (req,res)=>{
     res.render('campground/new');
@@ -73,6 +80,8 @@ app.put('/campgrounds/:id', async(req,res)=>{
     const campground = await Campground.findByIdAndUpdate(id,{...req.body.campground})
     res.redirect(`/campgrounds/${campground._id}`)
 })
+
+
 
 
 
