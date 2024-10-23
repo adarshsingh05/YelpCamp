@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const Campground = require('./model/campground');
 const methodOverride=require('method-override');
+const ejsMate= require('ejs-mate');
 // connecting the exported mongoose
 mongoose.connect('mongodb://localhost:27017/yelp-camp',
     
@@ -14,6 +15,9 @@ db.on("error ", console.error.bind(console, "db connection error"));
 db.once("open", ()=>{
     console.log("db is connected");
 })
+
+// setting up the ejs-mate
+app.engine('ejs', ejsMate);
 
 // setting the view engine to load the ejs file 
 app.set('view engine' , 'ejs');
