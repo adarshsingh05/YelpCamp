@@ -1,18 +1,23 @@
 <% layout ('layouts/boilerplate') %>
-    
-    <h1><%= campground.title %></h1>
-    <li><%= campground.location %></li>
-    <img src="<%=campground.image%>" alt="campground images">
-    <p> <%=campground.description%> </p>
-    <p>
-        <!-- sending the delete request using method override to the campground -->
-        <form action="/campgrounds/<%=campground._id %>?_method=delete" method="post">
-            <button> Delete</button>
-        </form>
-    </p>
 
-    <footer>
-        <a href="/campgrounds">all campgrounds</a>
-        <a href="/campgrounds/<%=campground._id%>/edit">Edit campground</a>
-
-    </footer>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card mb-3">
+            <img  class="card-img-top" src="<%=campground.image%>" alt="campground images">
+            <div class="card-body">
+              <h5 class="card-title"><%= campground.title %> </h5>
+              <p class="card-text"><%=campground.description%></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= campground.location %></li>
+              <li class="list-group-item"> Rs. <%= campground.price %> /per Night</li>
+            </ul>
+            <div class="card-body">
+                <a class="card-link btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit campground</a>
+                <form class="d-inline" action="/campgrounds/<%=campground._id %>?_method=delete" method="post">
+                    <button class="btn btn-danger"> Delete</button>
+                </form>
+            </div>
+          </div>
+    </div>
+</div>
