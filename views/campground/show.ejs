@@ -1,7 +1,9 @@
 <% layout ('layouts/boilerplate') %>
     
-    <li><%= campground.title %></li>
+    <h1><%= campground.title %></h1>
     <li><%= campground.location %></li>
+    <img src="<%=campground.image%>" alt="campground images">
+    <p> <%=campground.description%> </p>
     <p>
         <!-- sending the delete request using method override to the campground -->
         <form action="/campgrounds/<%=campground._id %>?_method=delete" method="post">

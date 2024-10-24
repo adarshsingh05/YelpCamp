@@ -27,7 +27,11 @@ const seedDB = async () =>{
         const random1000= Math.floor(Math.random() *1000);
         const camp = new Campground({
             location: `${cities[random1000].city} , ${cities[random1000].state}`,
-            title: `${sample(descriptors)} ${sample(places)}`
+            title: `${sample(descriptors)} ${sample(places)}`,
+            // link to random images using api
+            image: `https://picsum.photos/400?random=${Math.random()}`,
+            description: 'The text-muted class in Bootstrap is designed to make the text lighter by reducing its opacity. If its not working, try adding more specific text color classes to ensure its properly applied',
+            price: 20,
         })
         await camp.save()
     }
